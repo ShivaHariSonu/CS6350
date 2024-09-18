@@ -1,1 +1,1 @@
-This is a machine learning library developed by Shiva Hari Gundeti for CS5350/6350 in University of Utah.
+This is a machine learning library developed by Shiva Hari Gundeti(u1460836) for CS5350/6350 in University of Utah.
