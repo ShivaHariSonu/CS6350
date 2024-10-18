@@ -1,3 +1,4 @@
+#In[1]:
 import numpy as np
 import math
 import pandas as pd
@@ -214,3 +215,35 @@ for max_depth in range(1,17):
         else:
             test_error[max_depth] = [(split_method,(X_test.shape[0]-c)/X_test.shape[0])]
         print("*"*70)
+
+
+# In[4]:
+train_ans = []
+k = 0
+for i in train_error.keys():
+    train_ans.append(["Depth = "+ str(i)])
+    for j in range(len(train_error[i])):
+        train_ans[k].append(train_error[i][j][1])
+    k+=1
+test_ans = []
+k = 0
+for i in test_error.keys():
+    test_ans.append(["Depth = "+str(i)])
+    for j in range(len(test_error[i])):
+        test_ans[k].append(test_error[i][j][1])
+    k+=1
+
+# In[2]:
+from prettytable import PrettyTable
+x = PrettyTable()
+x.field_names = ["depth \ split_method","Entropy", "Gini Index", "Majority Error"]
+x.add_rows(train_ans)
+print(x)
+
+# In[3]:
+x = PrettyTable()
+x.field_names = ["depth \ split_method","Entropy", "Gini Index", "Majority Error"]
+x.add_rows(test_ans)
+print(x)
+
+# %%
