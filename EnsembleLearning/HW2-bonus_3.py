@@ -1,3 +1,4 @@
+#In[]:
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -30,7 +31,7 @@ Y_train = train_data.iloc[:,-1]
 
 X_test = test_data.iloc[:,:-1]
 Y_test = test_data.iloc[:,-1]
-
+#In[]
 class ID3:
     def __init__(self):
         self.data = None
@@ -151,7 +152,7 @@ class ID3:
         return final_tree
 
 
-
+#In[]:
 
 def classify(tree, query):
     labels = ['yes','no']
@@ -193,7 +194,7 @@ def random_forest(trees,fea_size):
         sample_data = random_split_data(train_data,train_data.shape[0],fea_size)
         algo = ID3()
         sample_data = pd.DataFrame(sample_data)
-        all_classifiers.append(algo.ID3_Algo(sample_data,sample_data,list(sample_data.columns[:-1]),labels,split_method,[]))
+        all_classifiers.append(algo.ID3_Algo(sample_data,sample_data,list(sample_data.columns[:-1]),split_method,[]))
     final_pred = []
     for i in range(X_train.shape[0]):
         final_pred.append(groupclassify(all_classifiers,X_train.iloc[i]))
@@ -211,7 +212,10 @@ def random_forest(trees,fea_size):
     return (X_train.shape[0]-c_train)/X_train.shape[0],(X_test.shape[0]-c_test)/X_test.shape[0]
 
 
+#In[]
 
+labels = ["yes","no"]
+split_method = "entropy"
 print("Random Forest")
 train_error = []
 train_error_fea = dict()
@@ -228,7 +232,7 @@ for fea_size in [6]:
 print("train errors: ",train_error_fea)
 print("test errors: ",test_error_fea)
 
-
+#In[]
 
 file = open("train_errors.txt", "w+")
 content = str(train_error)
